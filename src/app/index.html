@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maho Chat Development</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel = "stylesheet" href="assets/css/chat.css">
+</head>
+<body>
+    <div class = "login-wrap">
+        <div class="container">
+
+            <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+
+                <div class="row">
+                    <div class="iconmaho">
+                        <img src="assets/img/maho.gif">
+                    </div>
+                </div>
+
+                <div class="panel panel-default" >
+                    <div class="panel-heading">
+                        <div class="panel-title text-center">Welcome to maho chat</div>
+                    </div>
+
+                    <div class="panel-body" >
+
+                        <form class = "form-horizontal" id = "form-login">
+                            <div class="form-group">
+                                <div class ="col-md-12" style = "height: 100%">
+                                    <input type="text" class="form-control chat-message" id="username" placeholder="Type your username here, and press enter to begin chat"/>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="particles"></div>
+    </div>
+
+    <div class="wrap">
+        <div class="container-fluid">
+            <div class="col-md-9" style = "height: 90%; padding: 5px;">
+                <div class="chat-display">
+
+                </div>
+            </div>
+            <div class="col-md-3 " style = "height: 90%; padding: 5px;">
+                <div class="user">
+                    <ul class = "list-group">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12" style = "height: 10%; padding: 5px">
+                <form class = "form-horizontal" id = "form-message">
+                    <div class="form-group">
+                        <div class ="col-md-11" style = "height: 100%">
+                            <input type="text" class="form-control chat-message" id="message" placeholder="Type your message here"/>
+                        </div>
+
+                        <div class ="col-md-1" style = "height: 100%; padding-left: 0;">
+                            <button class = "btn btn-danger chat-send" id = "submit-message">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script rel="stylesheet" src="assets/js/jquery.min.js"></script>
+    <script rel="stylesheet" src="assets/js/bootstrap.min.js"></script>
+    <script rel="stylesheet" src="assets/js/canvas.js"></script>
+    <script src="assets/js/chat.js"></script>
+    <script src="assets/js/connection.js"></script>
+</body>
+</html>

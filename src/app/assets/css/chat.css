@@ -1,0 +1,154 @@
+html, body{
+    height: 100%;
+}
+
+body {
+    background-color: white;
+}
+
+/*
+*   Login
+*/
+
+.login-wrap{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: white;
+    z-index: 99999;
+    display: none;
+}
+
+#loginbox {
+    margin-top: 30px;
+}
+
+#loginbox > div:first-child {
+    padding-bottom: 10px;
+}
+
+.iconmaho {
+    display: block;
+    margin: auto;
+}
+
+.iconmaho > img{
+    width: 150px;
+}
+
+#form > div {
+    margin-bottom: 25px;
+}
+
+#form > div:last-child {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.panel {
+    background-color: transparent;
+}
+
+.panel-body {
+    padding-top: 30px;
+    background-color: rgba(2555,255,255,.3);
+}
+
+#particles {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: -2;
+}
+
+.iconmaho {
+    margin-top: 15%;
+    display: block;
+    fill: #525151;
+    text-align:center;
+}
+
+/*
+*   End of Login
+*/
+
+/*-----------------------------------*/
+
+/*
+*   Chat
+*/
+
+
+.wrap{
+    height: 100%;
+    background: #444444;
+}
+
+.container-fluid{
+    overflow: hidden;
+    padding: 20px;
+    height: 100%;
+}
+
+#form-message, #form-message > .form-group, #form-message > .form-group > div > .form-control, #form-message > .form-group > div > .btn{
+    height: 100% !important;
+    border-radius: 0;
+}
+
+.chat-message input{
+    font-size: 15px;
+}
+
+.full-height{
+    height: 100%;
+}
+
+.chat-display, .user, .chat-message{
+    background: white;
+    height: 100%;
+}
+
+.user{
+    margin-top: -20px;
+}
+
+.chat-display .chat-content{
+    display:block;
+    margin: 20px 25px;
+}
+
+.list-group-item:hover{
+    background:lightgrey;
+}
+
+.list-group-item{
+   border: none;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+    cursor: pointer;
+}
+
+ul > li > i{
+    color: limegreen;
+    font-size: 15px;
+    margin: 5px;
+}
+
+.chat-send{
+    width: 100%;
+    height: 100%;
+}
+
+.chat-display{
+    padding: 5px;
+}
+
+/*
+*   End of Chat
+*/
