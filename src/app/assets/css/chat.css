@@ -16,7 +16,6 @@ body {
     width: 100%;
     background: white;
     z-index: 99999;
-    display: none;
 }
 
 #loginbox {

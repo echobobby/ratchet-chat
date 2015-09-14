@@ -31,12 +31,11 @@ class Service implements MessageComponentInterface{
             foreach ($this->clients as $client) {
                 if ($from !== $client) {
                     // The sender is not the receiver, send to each client connected
-                    $message = $request->message;
+                    $message = json_encode($request->message);
                     $client->send($message);
                 }
             }
         }
-
     }
 
     public function onClose(ConnectionInterface $conn) {
@@ -51,21 +50,39 @@ class Service implements MessageComponentInterface{
         $this->logoutHandler($conn);
         $conn->close();
     }
-
-    public function messageHandler(){
-
+	
+	public function loginHandler($from, $username){
+		if(!in_array($username, $this->users)){
+			$this->setUsers($username);
+			
+			$response =  array(
+				"status" => "ok",
+				"type" => "login",
+				"username" => $username
+			);
+			
+			foreach($this->from as $client){
+				if($from !== $client){
+					$from->send(json_encode($response)); 
+				}
+			}
+		}
     }
 
-    public function loginHandler(){
+    public function messageHandler($from){
 
     }
 
     public function logoutHandler($conn){
         $this->clients->detach($conn);
     }
-
-    public function getOnlineUser(){
-
-    }
-
+	
+	public function setUsers($from, $username){
+		$this->users[$from->resourceId] = $username;
+	}
+	
+	public function getUsers(){
+		return $this->users;
+	}
+	
 }
