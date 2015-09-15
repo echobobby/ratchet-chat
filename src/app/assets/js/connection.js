@@ -8,5 +8,6 @@ conn.open = function(e){
 }
 
 conn.onmessage = function(e) {
-    render_message(e.data);
+    render_message(JSON.parse(e.data));
+    console.log(e);
 }
