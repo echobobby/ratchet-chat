@@ -1,0 +1,42 @@
+#!/usr/bin/env php
+<?php
+namespace Ratchet;
+
+use Ratchet\Server\IoServer;
+use Ratchet\Http\HttpServer;
+use Ratchet\WebSocket\WsServer;
+
+require dirname(__DIR__) . '../../vendor/autoload.php';
+
+$configuration = parse_ini_file(__DIR__.'/configuration.ini');
+
+$address = $configuration['address'];
+$port = $configuration['port'];
+$server = IoServer::factory(
+    new HttpServer(
+        new WsServer(
+            new Service()
+        )
+    ),
+    $port,
+    $address
+);
+
+$isConfigurationSuccess = false;
+$isConfigurationSuccess = $server ? !$isConfigurationSuccess : $isConfigurationSuccess;
+
+try {
+    if(!$isConfigurationSuccess) {
+        throw new \RuntimeException('Configuration Failed!');
+    }
+
+    echo sprintf("Connection established on %s:%s", $address, $port);
+    $server->run();
+} catch(\RuntimeException $e) {
+    echo 'Connection Failed! check your configuration.';
+}
+
+
+
+
+
