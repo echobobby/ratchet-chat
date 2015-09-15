@@ -12,7 +12,7 @@ class Service implements MessageComponentInterface{
 
     public function __construct() {
         $this->clients = new \SplObjectStorage;
-        $this->users = array();
+         $this->users = array();
 
     }
 
@@ -26,6 +26,14 @@ class Service implements MessageComponentInterface{
 
         if($request->type == "login"){
 
+            if($this->loginHandler($from, $request->username)){
+                foreach ($this->clients as $client) {
+                    if ($from !== $client) {
+                        // The sender is not the receiver, send to each client connected
+                        $client->send(json_encode($this->getUsers()));
+                    }
+                }
+            }
         }
         else if($request->type == "message"){
             foreach ($this->clients as $client) {
@@ -40,7 +48,6 @@ class Service implements MessageComponentInterface{
 
     public function onClose(ConnectionInterface $conn) {
         // The connection is closed, remove it, as we can no longer send it messages
-
         $this->logoutHandler($conn);
     }
 
@@ -52,21 +59,15 @@ class Service implements MessageComponentInterface{
     }
 	
 	public function loginHandler($from, $username){
-		if(!in_array($username, $this->users)){
-			$this->setUsers($username);
-			
-			$response =  array(
-				"status" => "ok",
-				"type" => "login",
-				"username" => $username
-			);
-			
-			foreach($this->from as $client){
-				if($from !== $client){
-					$from->send(json_encode($response)); 
-				}
-			}
-		}
+		if(!in_array($username, $this->users)) {
+
+            $this->setUsers($from, $username);
+
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public function messageHandler($from){

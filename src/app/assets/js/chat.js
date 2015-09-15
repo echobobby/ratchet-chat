@@ -10,7 +10,8 @@ $("#form-login").submit(function(event){
 
     if(username.val() != ""){
         conn.send(JSON.stringify({
-            user: username.val()
+            "type" : "login",
+            "username": username.val()
         }));
 
         $(".login-wrap").hide();

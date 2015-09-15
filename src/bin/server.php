@@ -23,4 +23,5 @@ $server = IoServer::factory(
     8080
 );
 
+echo "Connected";
 $server->run();
